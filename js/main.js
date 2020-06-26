@@ -42,8 +42,11 @@ $(function(){
     // ページ読み込み時
     addAnimationClass($target, $(window).scrollTop(), triggerPos);
     // スクロール時
+    var docHeight = $(document).height();
+    var winHeight = $(window).height();
     $(window).scroll(function () {
-      addAnimationClass($target, $(this).scrollTop(), triggerPos);
+      var currentPos = $(this).scrollTop();
+      addAnimationClass($target, currentPos, triggerPos, docHeight, winHeight + currentPos);
     });
   }
 
@@ -53,14 +56,20 @@ $(function(){
    * @param {jQueryObj} $target 対象のjqueryオブジェクト
    * @param {number} currentPos 現在のスクロール位置
    * @param {number} triggerPos アニメーションクラス付与位置（px）
+   * @param {number} docHeight  ドキュメントの高さ
+   * @param {number} scrollPos  ウィンドウの高さ+スクロール位置
    */
-  function addAnimationClass($target, currentPos, triggerPos) {
+  function addAnimationClass($target, currentPos, triggerPos, docHeight, scrollPos) {
     $target.each(function() {
       var $this = $(this);
       if (!($this.hasClass('is_show'))) {
         var targetPos = $this.offset().top;
         var addClassPos = targetPos - triggerPos;
         if (currentPos > addClassPos) {
+          $this.addClass('is_show');
+        }
+        // ページ下部までスクロールした場合
+        if ((docHeight - scrollPos) / docHeight <= 0.02) {
           $this.addClass('is_show');
         }
       }
