@@ -316,7 +316,7 @@ a:hover {
   }
 }
 .mvArea_txt {
-  bottom: 38%;
+  top: 57%;
   position: absolute;
   width: 100%;
   @include mq-sp {
@@ -569,6 +569,9 @@ a:hover {
 }
 .works_item_detail {
   font-size: 14px;
+  @include mq-sp {
+    font-size: 12px;
+  }
 }
 .works_modal_item {
   display: none;
@@ -889,10 +892,11 @@ a:hover {
   position: absolute;
   top: 50%;
   @include mq-sp{
+    display: inline-block;
     font-size: 20px;
+    left: 28%;
     margin: 0 auto;
-    position: static;
-    width: 166px;
+    position: relative;
   }
 }
 
