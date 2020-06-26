@@ -189,7 +189,7 @@ $(function(){
         "comment": "リスト形式で繰り返しデータを表示させる部分（worksとskill）をUnderscore.jsのテンプレート機能を使ってテンプレート化しました。<br>"
                    + "サイト内で使用している写真は自分で撮影しています（自己紹介部分を除く）。",
         "url": "",
-        "github": "",
+        "github": "https://github.com/SaitoShiori/portfolio",
         "screenshot_pc": ["./img/works_screenshot_portfolio_pc_01.png", "./img/works_screenshot_portfolio_pc_02.png"],
         "screenshot_sp": ["./img/works_screenshot_portfolio_sp_01.png", "./img/works_screenshot_portfolio_sp_02.png", "./img/works_screenshot_portfolio_sp_03.png", "./img/works_screenshot_portfolio_sp_04.png"]
       },
