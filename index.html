@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Shiori Saito Portfolio</title>
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <nav class="nav">
+        <div class="nav_nameArea">
+          <h1 class="nav_logo"><a href="#" class="nav_logo_link">Shiori<br>Saito</a></h1>
+          <div class="nav_navBtn"><span class="nav_navBtn_bar"></span></div>
+        </div>
+        <div class="nav_bg disp_sp"></div>
+        <ul class="nav_list">
+          <li class="nav_item"><a href="#about" class="nav_item_link">About</a></li>
+          <li class="nav_item"><a href="#works" class="nav_item_link">Works</a></li>
+          <li class="nav_item"><a href="#skill" class="nav_item_link">Skill</a></li>
+          <li class="nav_item"><a href="#contact" class="nav_item_link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="mvArea">
+        <div class="mvArea_txt">
+          <div class="mvArea_txt_cont mvArea_txt_cont1">
+            <div class="mvArea_txt_ttl mvArea_txt_ttl1 fadeInUp delay2 js_scrollAnimation">Shiori Saito</div>
+            <div class="mvArea_txt_sub mvArea_txt_sub1 fadeInUp delay3 js_scrollAnimation">web engineer</div>
+          </div>
+          <div class="mvArea_txt_cont mvArea_txt_cont2">
+            <div class="mvArea_txt_ttl mvArea_txt_ttl2 fadeInUp delay2 js_scrollAnimation">Shiori Saito</div>
+            <div class="mvArea_txt_sub mvArea_txt_sub2 fadeInUp delay3 js_scrollAnimation">web engineer</div>
+          </div>
+        </div>
+        <div class="mvArea_mvWrap">
+          <picture>
+            <source srcset="./img/mv_sp.png" media="(max-width:767px)">
+            <img src="./img/mv_pc.png" alt="トップ画像" class="mvArea_mv">
+        </picture>
+        </div>
+      </div>
+      <div class="scrollDown">
+        <span class="scrollDown_txt">scroll</span>
+        <span class="scrollDown_bar"></span>
+      </div>
+    </header>
+
+    <main class="main">
+      <div id="about" class="section about">
+        <div class="about_img-sp fadeInUp js_scrollAnimation"></div>
+        <div class="about_txtArea">
+          <h2 class="section_ttl about_ttl fadeInUp js_scrollAnimation">About</h2>
+          <div class="section_subttl about_subttl fadeInUp delay1 js_scrollAnimation">自己紹介</div>
+          <p class="about_sentence fadeInUp delay2 js_scrollAnimation">
+            1994年生まれ、出身は神奈川県横浜市です。<br>
+            高校卒業後にフリーターとして某レンタルショップで働いていましたが、手に職を付けたいと思い23歳のときIT業界へ転職。<br>
+            以降はフロントエンドを中心とした開発業務に関わり、主に実装を担当しています。
+          </p>
+        </div>
+        <div class="about_imgWrap fadeInUp js_scrollAnimation">
+          <img src="./img/about_self.png" alt="自己紹介写真" class="about_img">
+        </div>
+      </div>
+
+      <div id="works" class="section works">
+        <h2 class="section_ttl works_ttl">Works</h2>
+        <div class="section_subttl works_subttl">開発に携わったもの</div>
+        <div id="works_cont" class="works_cont">
+          <script type="text/template" id="worksTemplate">
+              <ul class="works_list">
+                <% _.each(worksData, function(data, dataIndex) { %>
+                  <li class="works_item fadeInUp js_scrollAnimation js_modal">
+                    <div class="works_item_imgWrap">
+                      <% if (data.imgSrc_pc !== "") { %>
+                        <img src="<%= data.imgSrc_pc %>" alt="<%= data.title %>" class="works_item_img">
+                      <% } else { %>
+                        <img src="./img/works_noImage_pc.png" alt="<%= data.title %>" class="works_item_img">
+                      <% } %>
+                    </div>
+                    <div class="works_item_txt">
+                      <div class="works_item_ttl"><%= data.title %></div>
+                      <p class="works_item_when"><%= data.when %></p>
+                      <p class="works_item_detail"><%= data.description %></p>
+                    </div>
+                  </li>
+                <% }); %>
+            </ul>
+            
+            <ul class="works_modal_list">
+              <% _.each(worksData, function(data, dataIndex) { %>
+                <li class="works_modal_item js_modal_openContent">
+                  <div class="works_modal_bg js_modal_close"></div>
+                  <div class="works_modal_inner">
+                    <div class="works_modal_imgArea">
+                      <div class="works_modal_imgWrap works_modal_imgWrap-pc">
+                        <% if (data.imgSrc_pc !== "") { %>
+                          <img src="<%= data.imgSrc_pc %>" alt="<%= data.title %>" class="works_modal_img">
+                        <% } else { %>
+                          <img src="./img/works_noImage_pc.png" alt="<%= data.title %>" class="works_modal_img">
+                        <% } %>
+                      </div>
+                      <div class="works_modal_imgWrap works_modal_imgWrap-sp">
+                        <% if (data.imgSrc_sp !== "") { %>
+                          <img src="<%= data.imgSrc_sp %>" alt="<%= data.title %>" class="works_modal_img">
+                          <% } else { %>
+                          <img src="./img/works_noImage_sp.png" alt="<%= data.title %>" class="works_modal_img">
+                        <% } %>
+                      </div>
+                    </div>
+                    <div class="works_modal_txtArea">
+                      <% if (data.url !== "") { %>
+                        <a href="<%= data.url %>" target="_blank" class="works_modal_url"><%= data.title %></a>
+                        <% } else { %>
+                          <p class="works_modal_ttl"><%= data.title %></p>
+                        <% } %>
+                        <% if (data.github !== "") { %>
+                          <a href="<%= data.github %>" target="_blank" class="works_modal_github">github</a>
+                        <% } %>
+                      <p class="works_modal_when"><%= data.when %></p>
+                      <p class="works_modal_using"><%= data.using %></p>
+                      <p class="works_modal_inCharge">担当：<%= data.inCharge %></p>
+                      <p class="works_modal_period">期間：<%= data.period %></p>
+                      <p class="works_modal_comment"><%= data.comment %></p>
+                    </div>
+                    <% if (data.screenshot_pc.length > 0) { %>
+                      <div class="works_modal_screenshotArea">
+                        <div class="works_modal_screenshot_ttl">screenshot</div>
+                        <div class="works_modal_screenshot">
+                          <% _.each(data.screenshot_pc, function(ssPc, ssPcIndex) { %>
+                            <div class="works_modal_screenshot_imgWrap works_modal_screenshot_imgWrap-pc">
+                              <img src="<%= ssPc %>" alt="<%= data.title %>のPCスクリーンショット画像<%= ssPcIndex + 1 %>" class="works_modal_screenshot_img">
+                            </div>
+                          <% }); %>
+                        </div>
+                        <div class="works_modal_screenshot">
+                          <% _.each(data.screenshot_sp, function(ssSp, ssSpIndex) { %>
+                            <div class="works_modal_screenshot_imgWrap works_modal_screenshot_imgWrap-sp">
+                              <img src="<%= ssSp %>" alt="<%= data.title %>のSPスクリーンショット画像<%= ssSpIndex + 1 %>" class="works_modal_screenshot_img">
+                            </div>
+                          <% }); %>
+                        </div>
+                      </div>
+                    <% } %>
+                  </div>
+                </li>
+              <% }); %>
+            </ul>
+          </script>
+        </div>
+      </div>
+
+      <div id="skill" class="section skill">
+        <h2 class="section_ttl skill_ttl">Skill</h2>
+        <div class="section_subttl skill_subttl">2020年6月時点</div>
+        <ul id="skill_list" class="skill_list">
+          <script type="text/template" id="skillTemplate">
+            <% _.each(skillData, function(data, dataIndex) { %>
+              <% var delay = ''; %>
+              <% if (dataIndex !== 0) {delay = 'delay' + dataIndex;} %>
+            <li class="skill_item skill_item-<%= data.classNm %> js_accordion js_scrollAnimation fadeInUp">
+              <div class="skill_item_ttl"><%= data.title %></div>
+              <div class="skill_item_detail js_accordion_openContent">
+                <ul class="skill_skillset">
+                  <% _.each(data.skills, function(skill) { %>
+                  <li class="skill_skillset_item">
+                    <div class="skill_skillset_txt">
+                      <div class="skill_skillset_name">
+                        <div class="skill_skillset_ttl"><%= skill.category %></div>
+                        <div class="skill_skillset_year"><%= skill.experienceYears %></div>
+                      </div>
+                      <div class="skill_skillset_percent"><%= skill.percent %>%</div>
+                    </div>
+                    <div class="skill_skillset_box"><div class="skill_skillset_boxInner"></div></div>
+                  </li>
+                  <% }); %>
+                </ul>
+              </div>
+            </li>
+            <% }); %>
+          </script>
+        </ul>
+      </div>
+
+      <div id="contact" class="section contact">
+        <h2 class="section_ttl contact_ttl">Contact</h2>
+        <div class="section_subttl contact_subttl">何かありましたらこちらまで</div>
+        <div class="contact_cont">
+          <div class="contact_bg"></div>
+          <div class="contact_cont_imgWrap js_scrollAnimation fadeInUp"><img src="./img/contact.png" alt="" class="contact_cont_img"></div>
+          <div class="contact_cont_txtArea js_scrollAnimation fadeInUp">
+            <div class="contact_cont_mailAddress">
+              <span class="contact_cont_mailAddress_txt">email address:</span><br>
+              saito@cri-me.com
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="pageTop">TOP</a>
+
+      <footer class="footer">
+        <p class="footer_message">Thank you for reading.</p>
+        <div class="footer_copyright">
+          <small class="footer_copyright_txt">🄫2020 Shiori Saito</small>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script src="./js/jquery-3.5.1.min.js"></script>
+  <script src="./js/underscore-min.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
